@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 //@RestController Used to rest controllers
@@ -30,7 +32,7 @@ public class IndexController {
         Usuario usuario = new Usuario();
         usuario.setNombre("Temis");
         usuario.setApellido("Barreto");
-
+        usuario.setEmail("temisbarreto@correo.com");
         model.addAttribute("usuario",  usuario);
         model.addAttribute("titulo", "Perfil del usuario".concat(usuario.getNombre()));
         return "perfil";
@@ -43,4 +45,27 @@ public class IndexController {
 //        mv.setViewName("index");
 //        return mv;
 //    }
+
+    @RequestMapping("/listar")
+    public String listar(Model model){
+        List<Usuario> usuarios = new ArrayList<>();
+        usuarios.add(new Usuario(
+                "temisbarreto@correo.com",
+                "Temis",
+                "Barreto"
+        ));
+        usuarios.add(new Usuario(
+                "marcelgonzales@correo.com",
+                "Marcel",
+                "Gonzales"
+        ));
+        usuarios.add(new Usuario(
+                "daniellopez@correo.com",
+                "Daniel",
+                "Lopez"
+        ));
+        model.addAttribute("titulo", "Listado de usuarios");
+        model.addAttribute("usuarios", usuarios);
+        return "listar";
+    }
 }
