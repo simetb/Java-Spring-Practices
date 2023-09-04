@@ -1,9 +1,6 @@
 package com.curso.springbootform.form.app.models.domains;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public class Usuario {
 
@@ -13,7 +10,8 @@ public class Usuario {
     private String nombre;
     @NotEmpty
     private String apellido;
-    @NotEmpty
+//    @NotEmpty
+    @NotBlank
     @Size(min = 3, max = 8)
     private String username;
 

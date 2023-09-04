@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.annotation.SessionScope;
@@ -20,6 +21,11 @@ public class FormController {
 
     @Autowired
     private UsuarioValidador validador;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.addValidators(validador);
+    }
     @GetMapping("/form")
     public String form(Model model) {
         Usuario usuario = new Usuario();
