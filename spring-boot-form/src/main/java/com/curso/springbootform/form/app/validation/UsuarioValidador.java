@@ -20,8 +20,9 @@ public class UsuarioValidador implements Validator {
 
         ValidationUtils.rejectIfEmpty(errors, "nombre", "NotEmpty.user.nombre");
 
-        if (!usuario.getIdentificador().matches("[0-9]{2}[.][\\\\d]{3}[.][\\\\d]{3}[-][A-Z]{1}")){
-            errors.rejectValue("identificador","pattern.user.identificador");
+        if (!usuario.getIdentificador().matches("[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")){
+              System.out.println("Hay un error");
+              errors.rejectValue("identificador","Pattern.user.identificador");
         }
     }
 

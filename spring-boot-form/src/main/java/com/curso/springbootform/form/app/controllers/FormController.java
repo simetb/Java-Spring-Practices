@@ -44,7 +44,6 @@ public class FormController {
 //        usuario.setPassword(password);
 //        usuario.setUsername(username);
 
-        model.addAttribute("titulo", "Resultado del formulario");
 
         if (result.hasErrors()){
 //            Map<String,String> errores = new HashMap<>();
@@ -55,6 +54,7 @@ public class FormController {
 //            model.addAttribute("error",errores);
             return "form";
         }
+        model.addAttribute("titulo", "Resultado del formulario");
         model.addAttribute("user", usuario);
         status.setComplete();
         return "resultado";
