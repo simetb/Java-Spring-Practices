@@ -1,10 +1,12 @@
 package com.curso.springbootform.form.app.models.domains;
 
+import com.curso.springbootform.form.app.validation.identificadorRegex;
 import jakarta.validation.constraints.*;
 
 public class Usuario {
 
 //    @Pattern(regexp = "[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
+    @identificadorRegex
     private String identificador;
 //    @NotEmpty
     private String nombre;
