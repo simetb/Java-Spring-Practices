@@ -1,7 +1,11 @@
 package com.curso.springbootform.form.app.models.domains;
 
+import com.curso.springbootform.form.app.validation.Requerido;
 import com.curso.springbootform.form.app.validation.identificadorRegex;
 import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 public class Usuario {
 
@@ -10,7 +14,8 @@ public class Usuario {
     private String identificador;
 //    @NotEmpty
     private String nombre;
-    @NotEmpty
+//    @NotEmpty
+    @Requerido
     private String apellido;
 //    @NotEmpty
     @NotBlank
@@ -20,9 +25,21 @@ public class Usuario {
     @NotEmpty
     private String password;
 
-    @NotEmpty
+//    @NotEmpty
+    @Requerido
     @Email
     private String email;
+
+    @NotNull
+    @Min(5)
+    @Max(5000)
+    private Integer cuenta;
+
+    @NotNull
+//    @Past
+    @Future
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaNacimiento;
 
     public String getUsername() {
         return username;
@@ -70,5 +87,23 @@ public class Usuario {
 
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
+    }
+
+    @NotNull
+    public Integer getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Integer cuenta) {
+        this.cuenta = cuenta;
+    }
+
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 }
