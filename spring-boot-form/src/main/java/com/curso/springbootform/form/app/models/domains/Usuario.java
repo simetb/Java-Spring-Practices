@@ -2,10 +2,12 @@ package com.curso.springbootform.form.app.models.domains;
 
 import com.curso.springbootform.form.app.validation.Requerido;
 import com.curso.springbootform.form.app.validation.identificadorRegex;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class Usuario {
 
@@ -37,9 +39,23 @@ public class Usuario {
 
     @NotNull
 //    @Past
-    @Future
+    @Past
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaNacimiento;
+
+//    @NotEmpty
+    @NotNull
+    private Pais pais;
+
+    @NotEmpty
+    private List<Role> roles;
+
+    @NotEmpty
+    private String genero;
+
+    private String valorSecreto;
+
+    private Boolean habilitar;
 
     public String getUsername() {
         return username;
@@ -106,4 +122,46 @@ public class Usuario {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Boolean getHabilitar() {
+        return habilitar;
+    }
+
+    public void setHabilitar(Boolean habilitar) {
+        this.habilitar = habilitar;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getValorSecreto() {
+        return valorSecreto;
+    }
+
+    public void setValorSecreto(String valorSecreto) {
+        this.valorSecreto = valorSecreto;
+    }
 }
+
+
