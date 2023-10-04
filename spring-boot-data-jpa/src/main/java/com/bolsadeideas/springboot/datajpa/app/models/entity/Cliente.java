@@ -1,6 +1,10 @@
 package com.bolsadeideas.springboot.datajpa.app.models.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,14 +18,29 @@ public class Cliente implements Serializable {
     private Long id;
 
 //    @Column(name = "NOMBRE_CLIENTE")
+
+    @NotEmpty
     private String nombre;
+
+    @NotEmpty
     private String apellido;
+
+    @NotEmpty
+    @Email
     private String email;
 
+    @NotNull
     @Column(name = "create_at")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
 
+
+//    @PrePersist
+//    public  void prePersist(){
+//        createAt = new Date();
+//    }
+//
 
     public Long getId() {
         return id;
