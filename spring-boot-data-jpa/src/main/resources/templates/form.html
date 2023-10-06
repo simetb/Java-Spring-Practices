@@ -25,7 +25,7 @@
     </nav>
     <div class="container">
         <h1 class="text-secondary border border-success border-top-0 border-left-0 border-right-0" th:text="${titulo}"></h1>
-        <div th:object="${cliente}" th:remove="tag">
+        <div th:object="${clien  te}" th:remove="tag">
             <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
                 <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
             </ul>

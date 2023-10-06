@@ -2,6 +2,7 @@ package com.bolsadeideas.springboot.datajpa.app.controller;
 
 import com.bolsadeideas.springboot.datajpa.app.models.dao.IClienteDao;
 import com.bolsadeideas.springboot.datajpa.app.models.entity.Cliente;
+import com.bolsadeideas.springboot.datajpa.app.models.service.IClienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,12 +22,11 @@ import java.util.Map;
 public class ClienteController {
 
     @Autowired
-    @Qualifier("clienteDaoJpa")
-    private IClienteDao clienteDao;
+    private IClienteService clienteService;
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public String listar(Model model){
         model.addAttribute("titulo", "Listado de clientes");
-        model.addAttribute("clientes", clienteDao.findAll());
+        model.addAttribute("clientes", clienteService.findAll());
         return "listar";
     }
 
@@ -44,7 +44,7 @@ public class ClienteController {
         Cliente cliente = null;
 
         if(id>0){
-            cliente = clienteDao.findOne(id);
+            cliente = clienteService.findOne(id);
         }else{
             return"redirect:/listar";
         }
@@ -60,8 +60,17 @@ public class ClienteController {
             model.addAttribute("titulo","Formulario de Clientes");
             return "form";
         }
-        clienteDao.save(cliente);
+        clienteService.save(cliente);
         status.setComplete();
         return "redirect:listar";
+    }
+
+    @RequestMapping(value = "/eliminar/{id}")
+    public String eliminar(@PathVariable(value = "id") Long id){
+        if(id > 0){
+            clienteService.delete(id);
+        }
+
+        return "redirect:/listar";
     }
 }
