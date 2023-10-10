@@ -7,7 +7,7 @@
         <div class="card bg-light">
             <div class="card-header"  th:text="${titulo}"></div>
             <div class="card-body">
-                <div th:object="${clien  te}" th:remove="tag">
+                <div th:object="${cliente}" th:remove="tag">
                     <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
                         <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
                     </ul>
