@@ -3,6 +3,8 @@ package com.bolsadeideas.springboot.datajpa.app.models.service;
 import com.bolsadeideas.springboot.datajpa.app.models.dao.IClienteDao;
 import com.bolsadeideas.springboot.datajpa.app.models.entity.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,11 +16,19 @@ public class ClienteServiceImpl implements IClienteService {
     @Autowired
     private IClienteDao clienteDao;
 
+
+
     @Transactional(readOnly = true)
     @Override
     public List<Cliente> findAll() {
         return (List<Cliente>) clienteDao.findAll();
     }
+
+    @Override
+    public Page<Cliente> findAll(Pageable pageable) {
+        return clienteDao.findAll(pageable);
+    }
+
 
     @Transactional
     @Override
