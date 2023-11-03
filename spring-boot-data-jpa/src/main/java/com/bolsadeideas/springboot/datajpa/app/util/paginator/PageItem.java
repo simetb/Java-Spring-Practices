@@ -3,7 +3,6 @@ package com.bolsadeideas.springboot.datajpa.app.util.paginator;
 public class PageItem {
 
     private int numero;
-
     private boolean actual;
 
     public PageItem(int numero, boolean actual) {
@@ -18,4 +17,5 @@ public class PageItem {
     public boolean isActual() {
         return actual;
     }
+
 }

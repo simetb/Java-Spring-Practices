@@ -1,23 +1,21 @@
 package com.bolsadeideas.springboot.datajpa.app.models.entity;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
-import java.util.Date;
-
 @Entity
-@Table(name="clientes")
+@Table(name = "clientes")
 public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-//    @Column(name = "NOMBRE_CLIENTE")
 
     @NotEmpty
     private String nombre;
@@ -32,15 +30,8 @@ public class Cliente implements Serializable {
     @NotNull
     @Column(name = "create_at")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createAt;
-
-
-//    @PrePersist
-//    public  void prePersist(){
-//        createAt = new Date();
-//    }
-//
 
     public Long getId() {
         return id;
@@ -82,5 +73,10 @@ public class Cliente implements Serializable {
         this.createAt = createAt;
     }
 
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
     private static final long serialVersionUID = 1L;
+
 }
