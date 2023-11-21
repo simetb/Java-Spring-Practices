@@ -4,6 +4,7 @@ import com.bolsadeideas.springboot.datajpa.app.models.service.IClienteService;
 import com.bolsadeideas.springboot.datajpa.app.util.paginator.PageRender;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,8 +20,12 @@ import java.util.Map;
 @SessionAttributes("cliente")
 public class ClienteController {
 
+    private final IClienteService clienteService;
+
     @Autowired
-    private IClienteService clienteService;
+    public ClienteController(@Qualifier("clienteServiceEspecifico") IClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
 
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public String listar(@RequestParam(name="page", defaultValue="0") int page, Model model) {

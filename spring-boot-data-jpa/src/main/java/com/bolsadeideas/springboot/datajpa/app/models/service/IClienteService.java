@@ -8,15 +8,13 @@ import java.util.List;
 
 public interface IClienteService {
 
-    public List<Cliente> findAll();
+    List<Cliente> findAll();
 
-    public Page<Cliente> findAll(Pageable pageable);
+    Page<Cliente> findAll(Pageable pageable);
 
-    public void save(Cliente cliente);
+    void save(Cliente cliente);
 
-    public Cliente findOne(Long id);
+    Cliente findOne(Long id);
 
-    public void delete(Long id);
-
-
+    void delete(Long id);
 }
